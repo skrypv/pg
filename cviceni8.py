@@ -34,10 +34,18 @@ class Osoba:
             self.__telefon = hodnota
 
     @email.setter
-    def email(self, hodnota:str):
+    def email(self, hodnota):
         if "@" not in hodnota:
-            raise InvalidData("Email musi obsahovat "@"")
-            self.__email = hodnota
+            raise InvalidData("Email musi obsahovat @")
+            if "." not in hodnota:
+                raise InvalidData("Email musi obssahovat tecku")
+                if hodnota.replace("@", "").replace(".", ""),issalnum():
+                 self.__email = hodnota
+            else :
+                raise InvalidData("Email musi obsahovst pouze pismena a cislice")
+
+    
+
 
     def __str__(self):
         return {"Osoba: (self.jmeno), (self.telefon), (self.email)"}
