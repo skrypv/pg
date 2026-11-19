@@ -8,28 +8,39 @@ class Osoba:
         self.telefon = telefon
         self.email = email 
 
+
     @property
     def jmeno(self):
       return self.__jmeno
-    @jmeno.setter
-    def jmeno(self, hodnota):
-        raise InvalidData("Jmeno muze obsahovat pouze pismena")
-        self.__lmeno = hodnota
+    
     @property    
     def telefon(self):
         return self.__telefon
-    @telefon.setter
-    def telefon(self, hodnota):
-        raise InvalidData("Telefon muze obsahovat pouze cisla")
-        self.__telefon = hodnota
         
-
-
+    @property
     def email(self):
         return self.__email
+
+    @jmeno.setter
+    def jmeno(self, hodnota):
+        if hodnota.replase("", "").isalpha():
+            self.__lmeno = hodnota
+        else:
+            raise InvalidData("Cislo muze obsahovat pouze cisla")
+
+    @telefon.setter
+    def telefon(self, hodnota):
+            raise InvalidData("Telefon muze obsahovat pouze cisla")
+            self.__telefon = hodnota
+
     @email.setter
-    def email(self, hodnota):
-       self.__email = hodnota
+    def email(self, hodnota:str):
+        if "@" not in hodnota:
+            raise InvalidData("Email musi obsahovat "@"")
+            self.__email = hodnota
+
+    def __str__(self):
+        return {"Osoba: (self.jmeno), (self.telefon), (self.email)"}
 
    
 
